@@ -1,21 +1,18 @@
 
-/*pipeline {   
+pipeline {   
     agent any  
     stages{
         stage('Build'){
             steps{
                 sh 'echo "Building..." '
-                sh 'chmod +x Linux-Build.sh'
-                sh 'Linux-Build.sh'
-                archiveArtifacts artifacts: 'bin/Debug/*', fingerprint: true
+                sh 'g++ HelloWorld.c -o HelloWorld
              }    
           }    
           stage('Test'){
               steps{
                   sh 'echo "Running..."'
-                  sh 'chmod +x Linux-Run.sh'
-                  sh 'Linux-Run.sh'
+                  sh './HelloWorld'
               }    
          }
     }         
-}*/
+}
