@@ -7,7 +7,7 @@ pipeline {
                 sh 'echo "Building..." '
                 sh 'chmod +x Linux-Build.sh'
                 sh 'Linux-Build.sh'
-                archiveArtifacts artifacts: 'bin/Debug/*', fingerprint: true
+                //archiveArtifacts artifacts: 'bin/Debug/*', fingerprint: true
              }    
           }    
           stage('Test'){
@@ -17,5 +17,10 @@ pipeline {
                   sh 'Linux-Run.sh'
               }    
          }
+        post {
+            always {
+                junit 'build/reports/**/*.xml'
+            }
+        }
     }         
 }
